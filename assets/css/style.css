@@ -44,6 +44,77 @@ button:hover {
     display: none;
 }
 
+#recipe .bottom-section {
+    display: flex;
+    justify-content: space-between; /* Distribui as seções horizontalmente */
+    gap: 10px; /* Adiciona um pequeno espaço entre as seções */
+    margin-top: 20px;
+}
+
+.recipe-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas lado a lado */
+    gap: 1cm; /* Espaço entre as receitas */
+    margin: 20px; /* Espaçamento externo para organização */
+}
+
+.recipe {
+    border: none; /* Adiciona uma borda para separar cada receita */
+    padding: 10px; /* Espaço interno */
+    background-color: white; /* Fundo branco */
+    page-break-inside: avoid; /* Evita quebra de página no meio de uma receita */
+    height: auto; /* Ajusta a altura dinamicamente */
+}
+
+
+.comprador, .fornecedor {
+    width: 50%; /* Mantém a largura reduzida */
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 9px;
+    font-weight: 600;
+    word-wrap: break-word; /* Garante que palavras longas sejam quebradas */
+    word-break: break-word; /* Adiciona suporte adicional para navegadores */
+    overflow-wrap: break-word; /* Suporte moderno para quebra de palavras */
+}
+
+.comprador h2, .fornecedor h2 {
+    font-size: 10px;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin: 0; /* Remove margens adicionais, se houver */
+    padding-bottom: 10px;
+}
+
+.inline-group {
+    display: flex; /* Alinha os elementos em linha */
+    align-items: center; /* Centraliza verticalmente */
+    white-space: nowrap;
+}
+
+.inline-group .line {
+    border-bottom: 1px solid #000; /* Cria a linha */
+    height: 1px; /* Define a altura da linha */
+    flex-grow: 1; /* Permite que a linha se ajuste ao espaço disponível */
+}
+
+.inline-group .line.short {
+    flex-grow: 0; /* Desativa o ajuste automático */
+    width: 100px; /* Define um tamanho fixo menor */
+}
+
+.inline-group .line.medium {
+    flex-grow: 0; /* Desativa o ajuste automático */
+    width: 150px; /* Define um tamanho fixo maior */
+}
+
+.inline-group label {
+    margin-right: 0; /* Espaço mínimo entre o texto e a linha */
+    font-weight: bold; /* Torna o texto mais visível */
+}
+
 @media print {
     @page {
         size: landscape;
@@ -78,18 +149,28 @@ button:hover {
     }
 
     .recipe-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1cm;
-        page-break-inside: avoid;
+        grid-template-columns: 1fr 1fr; /* Mantém duas receitas por linha */
+        grid-gap: 1cm; /* Espaçamento entre receitas */
+        margin: 1cm; /* Espaçamento ao redor do conteúdo */
     }
 
     .recipe {
-        position: relative;
-        border: transparent;
-        padding: 10px;
-        font-size: 14px;
-        background-color: white;
+        position: relative; /* Define a receita como um contêiner posicionado */
+        display: flex;
+        flex-direction: column; /* Organiza o conteúdo verticalmente */
+        justify-content: space-between; /* Garante que os elementos ocupem o espaço disponível */
+        height: 100%; /* Faz a receita ocupar toda a altura permitida */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .bottom-section {
+        position: relative; /* Fixa a posição em relação ao contêiner da receita */
+        margin-top: auto; /* Empurra a seção para o final do contêiner */
+        width: 100%; /* Garante que ocupe toda a largura */
+        text-align: center; /* Centraliza o conteúdo */
+        padding: 10px 0; /* Espaçamento interno */
+        border: none; /* Opcional: uma linha para destacar a seção */
     }
 
     .recipe::before {
@@ -138,17 +219,8 @@ button:hover {
         padding: 5px;
     }
 
-    .comprador {
-        border: 3px solid #000;
-        width: 50%;
-        border-radius: 10px;
-        padding: 0;
-        margin: 0;
-    }
-
-    .fornecedor {
-        border: 3px solid #000;
-        width: 50%;
-        border-radius: 10px;
+    .comprador, .fornecedor {
+        page-break-inside: avoid; /* Evita quebra de página no meio */
+        margin-bottom: 20px; /* Espaço adicional para acomodar a seção inferior */
     }
 }

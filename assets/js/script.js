@@ -24,20 +24,42 @@ function generateRecipe() {
         <p>${medicationName} ${dosage} ________________ ${quantity}</p>
         <p>Tomar ${dosageAmount} ${administration} ${dosageInstructions}</p>
 
-        <div class="comprador">
-            <p><strong>Identificação do Comprador</strong></p>
-            <p>Nome:________________________________</p>
-            <p>Ident.:_____________Org. Emssor:_____</p>
-            <p>End.:___________________________________________________________</p>
-            <p>Cidade:___________________UF:________</p>
-            <p>Telefone:_______________________</p>
-            
-        </div>
+        <div class="bottom-section">
+            <div class="comprador">
+                <h2><strong>Identificação do Comprador</strong></h2>
+                <div class="inline-group">
+                    <label>Nome:</label>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+                <div class="inline-group">
+                    <label>Ident.:</label>
+                    <span class="line medium"></span>
+                    <label>Org. Emissor:</label>
+                    <span class="line short"></span>
+                </div>
+                <div class="inline-group">
+                    <label>End.:</label>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+                <div class="inline-group">
+                    <label>Cidade:</label>
+                    <span class="line medium"></span>
+                    <label>UF:</label>
+                    <span class="line short"></span>
+                </div>
+                <div class="inline-group">
+                    <label>Telefone:</label>
+                    <span class="line"></span>
+                </div>
+            </div>
         
-        <div class="fornecedor">
-            <p><strong>Identificação do Fornecedor</strong></p>
-            <p>__________________________</p>
-            <p>Data____/____/_____</p>
+            <div class="fornecedor">
+                <h2><strong>Identificação do Fornecedor</strong></h2>
+                <p>__________________________</p>
+                <p>Data____/____/_____</p>
+            </div>
         </div>
     `;
 
