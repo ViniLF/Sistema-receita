@@ -1,4 +1,5 @@
 function generateRecipe() {
+    // Captura os valores dos campos do formulário
     const patientName = document.getElementById('patient-name').value;
     const prescription = document.getElementById('prescription').value;
     const medicationName = document.getElementById('medication-name').value;
@@ -8,6 +9,7 @@ function generateRecipe() {
     const administration = document.getElementById('administration').value;
     const dosageInstructions = document.getElementById('dosage-instructions').value;
 
+    // Conteúdo da receita
     const recipeContent = `
         <h2 class="title-prescription"><strong>Receituário</strong> ${prescription}</h2>
         <div class="emitente">
@@ -20,16 +22,18 @@ function generateRecipe() {
         <div class="name">
             <p><strong>Paciente:</strong> ${patientName}</p>
         </div>
-        <h3>Prescrição:</h3>
-        <p>${medicationName} ${dosage} ________________ ${quantity}</p>
-        <p>Tomar ${dosageAmount} ${administration} ${dosageInstructions}</p>
-
+        <h3 class=""presc-title>Prescrição:</h3>
+        <p class="first-line">${medicationName} ${dosage} ________________ ${quantity}</p>
+        <p class="second-line">Tomar ${dosageAmount} ${administration} ${dosageInstructions}</p>
+        <div class="doctor-signature">
+            <hr>
+            <p>Assinatura do Médico</p>
+        </div>
         <div class="bottom-section">
             <div class="comprador">
                 <h2><strong>Identificação do Comprador</strong></h2>
                 <div class="inline-group">
                     <label>Nome:</label>
-                    <span class="line"></span>
                     <span class="line"></span>
                 </div>
                 <div class="inline-group">
@@ -40,7 +44,6 @@ function generateRecipe() {
                 </div>
                 <div class="inline-group">
                     <label>End.:</label>
-                    <span class="line"></span>
                     <span class="line"></span>
                 </div>
                 <div class="inline-group">
@@ -54,7 +57,6 @@ function generateRecipe() {
                     <span class="line"></span>
                 </div>
             </div>
-        
             <div class="fornecedor">
                 <h2><strong>Identificação do Fornecedor</strong></h2>
                 <p>__________________________</p>
@@ -63,8 +65,8 @@ function generateRecipe() {
         </div>
     `;
 
+    // Exibe a receita gerada no output
     const recipeOutput = document.getElementById('recipe');
-
     recipeOutput.innerHTML = `
         <div class="recipe-wrapper">
             <div class="recipe">${recipeContent}</div>
@@ -72,5 +74,6 @@ function generateRecipe() {
         </div>
     `;
 
+    // Torna a seção de output visível
     document.getElementById('recipe-output').style.display = 'block';
 }

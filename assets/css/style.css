@@ -1,8 +1,10 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
 
+/* Form Container */
 .form-container {
     max-width: 600px;
     margin: auto;
@@ -40,81 +42,85 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Recipe Output */
 #recipe-output {
     display: none;
 }
 
 #recipe .bottom-section {
     display: flex;
-    justify-content: space-between; /* Distribui as seções horizontalmente */
-    gap: 10px; /* Adiciona um pequeno espaço entre as seções */
-    margin-top: 20px;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 0;
 }
 
+/* Recipe Styles */
 .recipe-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Define duas colunas lado a lado */
-    gap: 1cm; /* Espaço entre as receitas */
-    margin: 20px; /* Espaçamento externo para organização */
+    grid-template-columns: 1fr 1fr;
+    gap: 1cm;
+    margin: 0;
 }
 
 .recipe {
-    border: none; /* Adiciona uma borda para separar cada receita */
-    padding: 10px; /* Espaço interno */
-    background-color: white; /* Fundo branco */
-    page-break-inside: avoid; /* Evita quebra de página no meio de uma receita */
-    height: auto; /* Ajusta a altura dinamicamente */
+    border: none;
+    padding: 10px;
+    background-color: white;
+    page-break-inside: avoid;
+    height: auto;
 }
 
-
+/* Comprador & Fornecedor Sections */
 .comprador, .fornecedor {
-    width: 50%; /* Mantém a largura reduzida */
+    width: 50%;
     border: 3px solid #000;
     border-radius: 10px;
-    padding: 0px;
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-size: 9px;
     font-weight: 600;
-    word-wrap: break-word; /* Garante que palavras longas sejam quebradas */
-    word-break: break-word; /* Adiciona suporte adicional para navegadores */
-    overflow-wrap: break-word; /* Suporte moderno para quebra de palavras */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .comprador h2, .fornecedor h2 {
     font-size: 10px;
-    text-align: center; /* Centraliza o texto horizontalmente */
-    margin: 0; /* Remove margens adicionais, se houver */
+    text-align: center;
+    margin: 0;
     padding-bottom: 10px;
 }
 
+/* Inline Group Styles */
 .inline-group {
-    display: flex; /* Alinha os elementos em linha */
-    align-items: center; /* Centraliza verticalmente */
+    display: flex;
+    align-items: center;
     white-space: nowrap;
 }
 
 .inline-group .line {
-    border-bottom: 1px solid #000; /* Cria a linha */
-    height: 1px; /* Define a altura da linha */
-    flex-grow: 1; /* Permite que a linha se ajuste ao espaço disponível */
+    border-bottom: 1px solid #000;
+    height: 1px;
+    flex-grow: 1;
 }
 
 .inline-group .line.short {
-    flex-grow: 0; /* Desativa o ajuste automático */
-    width: 100px; /* Define um tamanho fixo menor */
+    flex-grow: 0;
+    width: 100px;
 }
 
 .inline-group .line.medium {
-    flex-grow: 0; /* Desativa o ajuste automático */
-    width: 150px; /* Define um tamanho fixo maior */
+    flex-grow: 0;
+    width: 150px;
 }
 
 .inline-group label {
-    margin-right: 0; /* Espaço mínimo entre o texto e a linha */
-    font-weight: bold; /* Torna o texto mais visível */
+    margin-right: 0;
+    font-weight: bold;
 }
 
+/* Print Styles */
 @media print {
     @page {
         size: landscape;
@@ -141,6 +147,10 @@ button:hover {
         display: none;
     }
 
+    .presc-title {
+        font-size: 08px;
+    }
+
     #recipe-output {
         display: block;
         margin: 0;
@@ -149,28 +159,28 @@ button:hover {
     }
 
     .recipe-wrapper {
-        grid-template-columns: 1fr 1fr; /* Mantém duas receitas por linha */
-        grid-gap: 1cm; /* Espaçamento entre receitas */
-        margin: 1cm; /* Espaçamento ao redor do conteúdo */
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1cm;
+        margin: 1cm;
     }
 
     .recipe {
-        position: relative; /* Define a receita como um contêiner posicionado */
+        position: relative;
         display: flex;
-        flex-direction: column; /* Organiza o conteúdo verticalmente */
-        justify-content: space-between; /* Garante que os elementos ocupem o espaço disponível */
-        height: 100%; /* Faz a receita ocupar toda a altura permitida */
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
         padding: 20px;
         box-sizing: border-box;
     }
 
     .bottom-section {
-        position: relative; /* Fixa a posição em relação ao contêiner da receita */
-        margin-top: auto; /* Empurra a seção para o final do contêiner */
-        width: 100%; /* Garante que ocupe toda a largura */
-        text-align: center; /* Centraliza o conteúdo */
-        padding: 10px 0; /* Espaçamento interno */
-        border: none; /* Opcional: uma linha para destacar a seção */
+        position: relative;
+        margin-top: auto;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border: none;
     }
 
     .recipe::before {
@@ -184,8 +194,15 @@ button:hover {
         background-image: url('../images/logoPrincipal.png');
         background-repeat: no-repeat;
         background-size: cover;
-        opacity: 0.1; /* Define a transparência do logo */
-        z-index: -1; /* Coloca o logo atrás do conteúdo */
+        opacity: 0.1;
+        z-index: -1;
+    }
+
+    .first-line, .second-line {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
     }
 
     .emitente {
@@ -217,10 +234,31 @@ button:hover {
     .name p {
         margin: 0;
         padding: 5px;
+        font-size: 10px;
     }
 
     .comprador, .fornecedor {
-        page-break-inside: avoid; /* Evita quebra de página no meio */
-        margin-bottom: 20px; /* Espaço adicional para acomodar a seção inferior */
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    .doctor-signature {
+        margin-top: 150px;
+        text-align: right;
+        width: 50%;
+        margin-left: auto;
+    }
+
+    .doctor-signature hr {
+        border: 1px solid #000;
+        width: 100%;
+        margin: 0;
+    }
+
+    .doctor-signature p {
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 5px;
+        text-align: center;
     }
 }
