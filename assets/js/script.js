@@ -1,17 +1,37 @@
-function generateRecipe() {
-    // Captura os valores dos campos do formulário
-    const patientName = document.getElementById('patient-name').value;
-    const prescription = document.getElementById('prescription').value;
-    const medicationName = document.getElementById('medication-name').value;
-    const dosage = document.getElementById('dosage').value;
-    const quantity = document.getElementById('quantity').value;
-    const dosageAmount = document.getElementById('dosage-amount').value;
-    const administration = document.getElementById('administration').value;
-    const dosageInstructions = document.getElementById('dosage-instructions').value;
+/**
+ * Valida o formulário para garantir que todos os campos obrigatórios sejam preenchidos.
+ * @returns {boolean} Retorna true se o formulário for válido, caso contrário, false.
+ */
+function validateForm() {
+    const form = document.getElementById('recipe-form');
+    if (!form.checkValidity()) {
+        alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+        return false;
+    }
+    return true;
+}
 
-    // Conteúdo da receita
+/**
+ * Gera a receita com base nos dados do formulário e inicia o processo de impressão.
+ */
+function generateRecipe() {
+    if (!validateForm()) {
+        return;
+    }
+
+    // Captura os valores dos campos do formulário
+    const formData = {
+        patientName: document.getElementById('patient-name').value,
+        prescription: document.getElementById('prescription').value,
+        medicationName: document.getElementById('medication-name').value,
+        dosage: document.getElementById('dosage').value,
+        quantity: document.getElementById('quantity').value,
+        instructions: document.getElementById('instructions').value
+    };
+
+    // Template para o conteúdo da receita
     const recipeContent = `
-        <h2 class="title-prescription"><strong>Receituário</strong> ${prescription}</h2>
+        <h2 class="title-prescription"><strong>Receituário</strong> ${formData.prescription}</h2>
         <div class="emitente">
             <h3>IDENTIFICAÇÃO DO EMITENTE</h3>
             <p>Nome completo: _____________________________________________________________</p>
@@ -20,11 +40,11 @@ function generateRecipe() {
             <p>CRM: _____________________ UF: _________ Data: ____/____/_____</p>
         </div>
         <div class="name">
-            <p><strong>Paciente:</strong> ${patientName}</p>
+            <p><strong>Paciente:</strong> ${formData.patientName}</p>
         </div>
-        <h3 class=""presc-title>Prescrição:</h3>
-        <p class="first-line">${medicationName} ${dosage} ________________ ${quantity}</p>
-        <p class="second-line">Tomar ${dosageAmount} ${administration} ${dosageInstructions}</p>
+        <h3 class="presc-title">Prescrição:</h3>
+        <p class="first-line">${formData.medicationName} ${formData.dosage} ________________ ${formData.quantity}</p>
+        <p class="second-line">${formData.instructions}</p>
         <div class="doctor-signature">
             <hr>
             <p>Assinatura do Médico</p>
@@ -74,6 +94,8 @@ function generateRecipe() {
         </div>
     `;
 
-    // Torna a seção de output visível
+    // Torna a seção de output visível e imprime a receita
     document.getElementById('recipe-output').style.display = 'block';
+    window.print();
+    document.getElementById('recipe-output').style.display = 'none';
 }
